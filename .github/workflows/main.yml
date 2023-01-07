@@ -13,5 +13,15 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3.3.0
       
+    - name: set up JDK 11
+      uses: actions/setup-java@v3
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+        cache: gradle
+
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+      
     - name: Build Check
       run: ./graldew clean build
