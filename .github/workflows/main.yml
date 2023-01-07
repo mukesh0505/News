@@ -13,7 +13,7 @@ jobs:
     
     - name: Print KeyStore String
       run: echo "${{secrets.KEYSTORE}}"
-        echo file("keystore/production/news-debug-keystore")
+        echo "${file("keystore/production/news-debug-keystore")}"
     
     - name: Decode Keystore
       id: decode_keystore
