@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     
   steps:
-    - uses: actions/checkout
+    - uses: actions/checkout@3
       
     - name: Lint check
       run: ./graldew lint
