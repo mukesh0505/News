@@ -10,18 +10,27 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+    
+    - name: Decode Keystore
+      id: decode_keystore
+      uses: timheuer/base64-to-file@v1
+      with:
+          fileName: 'keystore/news-debug-keystore'
+          encodedString: ${{ secrets.KEYSTORE }}
     - name: Checkout
       uses: actions/checkout@v3.3.0
       
-    - name: set up JDK 11
-      uses: actions/setup-java@v3
+    - name: set up JDK 1.8
+      uses: actions/setup-java@v1
       with:
-        java-version: '11'
-        distribution: 'zulu'
-        cache: gradle
+          java-version: 1.8
 
     - name: Grant execute permission for gradlew
       run: chmod +x ./gradlew
       
-    - name: Build Check
-      run: ./gradlew clean build
+    - name: build prod
+      run: ./gradlew app:bundleRelease
+      env:
+          SIGNING_KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          SIGNING_KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+          SIGNING_STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
