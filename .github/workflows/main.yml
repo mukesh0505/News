@@ -24,4 +24,4 @@ jobs:
       run: chmod +x ./gradlew
       
     - name: Build Check
-      run: ./graldew clean build
+      run: graldew build
