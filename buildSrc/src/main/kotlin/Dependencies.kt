@@ -11,4 +11,9 @@ object Libs {
     const val composeUiJunitTest = "androidx.compose.ui:ui-test-junit4:${Versions.compose}"
     const val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso}"
     const val androidTestExtJunit = "androidx.test.ext:junit:${Versions.androidTestExtJunit}"
+    const val androidMaterial = "com.google.android.material:material:${Versions.androidMaterial}"
+    const val appCompact = "androidx.appcompat:appcompat:${Versions.appCompact}"
+    const val hiltAndroid = "com.google.dagger:hilt-android:${Versions.hilt}"
+    const val hiltCompiler = "com.google.dagger:hilt-compiler:${Versions.hilt}"
+    const val androidXViewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.androidViewModelKtx}"
 }

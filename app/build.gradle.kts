@@ -5,6 +5,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     kotlin("kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 val productionKeystoreProperties = Properties().apply {
@@ -52,7 +53,7 @@ android {
     defaultConfig {
         applicationId = AppConfig.applicationId
         minSdk = AppConfig.minSdk
-        targetSdk = AppConfig.compileSdk
+        targetSdk = AppConfig.targetSdk
         versionCode = AppConfig.versionCode
         versionName = AppConfig.versionName
 
@@ -105,6 +106,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":domain"))
     implementation(Libs.coreKtx)
     implementation(Libs.lifeCycleRuntimeKtx)
     implementation(Libs.activityCompose)
@@ -117,4 +119,8 @@ dependencies {
     androidTestImplementation(Libs.composeUiJunitTest)
     debugImplementation(Libs.composeUiTooling)
     debugImplementation(Libs.composeUiManifest)
+
+    implementation(Libs.hiltAndroid)
+    kapt(Libs.hiltCompiler)
+    implementation(Libs.androidXViewModelKtx)
 }

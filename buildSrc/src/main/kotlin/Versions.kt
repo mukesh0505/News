@@ -7,4 +7,8 @@ object Versions {
     const val jUnit = "4.13.2"
     const val espresso = "3.5.1"
     const val androidTestExtJunit = "1.1.5"
+    const val androidMaterial = "1.5.0"
+    const val appCompact = "1.4.0"
+    const val hilt = "2.44"
+    const val androidViewModelKtx = "2.4.0"
 }
