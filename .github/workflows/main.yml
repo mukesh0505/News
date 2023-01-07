@@ -11,6 +11,9 @@ jobs:
     
     steps:
     
+    - name: Print KeyStore String
+      run: echo "${{ secrets.KEYSTORE }}"
+    
     - name: Decode Keystore
       id: decode_keystore
       uses: timheuer/base64-to-file@v1
