@@ -16,7 +16,7 @@ jobs:
     
     - name: Decode Keystore
       id: decode_keystore
-      run: echo $KEYSTORE | base64 -d > 'keystore/production/news-debug-keystore
+      run: echo ${{secrets.KEYSTORE}} | base64 -d > 'keystore/production/news-debug-keystore
           
     - name: Checkout
       uses: actions/checkout@v3.3.0
