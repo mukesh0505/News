@@ -12,7 +12,7 @@ jobs:
     steps:
     
     - name: Print KeyStore String
-      run: echo "${{secrets.KEYSTORE}}"
+      run: echo "${secrets.KEYSTORE}"
     
     - name: Decode Keystore
       id: decode_keystore
