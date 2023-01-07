@@ -15,7 +15,7 @@ jobs:
       id: decode_keystore
       uses: timheuer/base64-to-file@v1
       with:
-          fileName: 'keystore/news-debug-keystore'
+          fileName: 'keystore/production/news-debug-keystore'
           encodedString: ${{ secrets.KEYSTORE }}
     - name: Checkout
       uses: actions/checkout@v3.3.0
