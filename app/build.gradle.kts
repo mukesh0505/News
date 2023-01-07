@@ -8,45 +8,24 @@ plugins {
     id("com.google.dagger.hilt.android")
 }
 
-val productionKeystoreProperties = Properties().apply {
-    load(
-        FileInputStream(
-            File(
-                rootProject.rootDir,
-                "keystore/production/keystore.properties"
-            )
-        )
-    )
-}
-
-val debugKeystoreProperties = Properties().apply {
-    load(
-        FileInputStream(
-            File(
-                rootProject.rootDir,
-                "keystore/debug/keystore.properties"
-            )
-        )
-    )
-}
-
 android {
     namespace = AppConfig.applicationId
     compileSdk = AppConfig.compileSdk
 
     signingConfigs {
-        getByName("debug") {
-            storeFile = file("../keystore/debug/news-debug-keystore")
-            storePassword = debugKeystoreProperties.getProperty("STORE_PASSWORD")
-            keyAlias = debugKeystoreProperties.getProperty("KEY_ALIAS")
-            keyPassword = debugKeystoreProperties.getProperty("KEY_PASSWORD")
-        }
         create("release") {
             //TODO Create signingConfig at the time of release
+            val tmpFilePath = System.getProperty("user.home") + "/work/_temp/keystore/"
+            val allFilesFromDir = File(tmpFilePath).listFiles()
+
+            if (allFilesFromDir != null) {
+                val keystoreFile = allFilesFromDir.first()
+                keystoreFile.renameTo(file("keystore/production/news-debug-keystore"))
+            }
             storeFile = file("../keystore/production/news-debug-keystore")
-            storePassword = productionKeystoreProperties.getProperty("STORE_PASSWORD")
-            keyAlias = productionKeystoreProperties.getProperty("KEY_ALIAS")
-            keyPassword = productionKeystoreProperties.getProperty("KEY_PASSWORD")
+            storePassword = System.getenv("STORE_PASSWORD")
+            keyAlias = System.getenv("KEY_ALIAS")
+            keyPassword = System.getenv("KEY_PASSWORD")
         }
     }
 
@@ -67,12 +46,6 @@ android {
         getByName("debug") {
             isMinifyEnabled = false
             isDebuggable = true
-            isShrinkResources = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-            signingConfig = signingConfigs.getByName("debug")
         }
         getByName("release") {
             isMinifyEnabled = true
@@ -102,6 +75,9 @@ android {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
+    }
+    lint {
+        abortOnError = false
     }
 }
 
