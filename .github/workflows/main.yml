@@ -13,5 +13,5 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3.3.0
       
-    - name: Lint check
-      run: ./graldew lint
+    - name: Build Check
+      run: ./graldew clean build
