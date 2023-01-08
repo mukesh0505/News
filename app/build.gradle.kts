@@ -22,6 +22,7 @@ android {
                 val keystoreFile = allFilesFromDir.first()
                 keystoreFile.renameTo(file("keystore/production/news-debug-keystore"))
             }
+            print("Path : ${file("../keystore/production/news-debug-keystore").absolutePath}")
             storeFile = file("../keystore/production/news-debug-keystore")
             storePassword = System.getenv("STORE_PASSWORD")
             keyAlias = System.getenv("KEY_ALIAS")
