@@ -38,8 +38,15 @@ jobs:
       run: ./gradlew test
       
     - name: build prod
-      run: ./gradlew assemble
+      run: ./gradlew assembleRelease
       env:
           SIGNING_KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
           SIGNING_KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
           SIGNING_STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
+          
+          
+    - name: Upload APK
+      uses: actions/upload-artifact@v1
+      with:
+        name: apk
+        path: app/build/outputs/apk/release/app-release.apk 
