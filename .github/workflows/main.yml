@@ -32,7 +32,7 @@ jobs:
       run: chmod +x ./gradlew
       
     - name: ktlint
-      run: ./gradlew ktlint
+      run: ./gradlew lint
       
     - name: build prod
       run: ./gradlew buildRelease
