@@ -13,7 +13,7 @@ android {
     compileSdk = AppConfig.compileSdk
 
     signingConfigs {
-//        create("release") {
+        create("release") {
 //            //TODO Create signingConfig at the time of release
 //            val tmpFilePath = System.getProperty("user.home") + "/work/_temp/keystore/"
 //            val allFilesFromDir = File(tmpFilePath).listFiles()
@@ -27,7 +27,7 @@ android {
 //            storePassword = System.getenv("STORE_PASSWORD")
 //            keyAlias = System.getenv("KEY_ALIAS")
 //            keyPassword = System.getenv("KEY_PASSWORD")
-//        }
+        }
     }
 
     defaultConfig {
@@ -56,7 +56,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            signingConfig = signingConfigs.getByName("release")
+//            signingConfig = signingConfigs.getByName("release")
         }
     }
     compileOptions {
