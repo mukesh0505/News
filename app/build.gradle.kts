@@ -13,21 +13,21 @@ android {
     compileSdk = AppConfig.compileSdk
 
     signingConfigs {
-        create("release") {
-            //TODO Create signingConfig at the time of release
-            val tmpFilePath = System.getProperty("user.home") + "/work/_temp/keystore/"
-            val allFilesFromDir = File(tmpFilePath).listFiles()
-
-            if (allFilesFromDir != null) {
-                val keystoreFile = allFilesFromDir.first()
-                keystoreFile.renameTo(file("keystore/production/news-debug-keystore"))
-            }
-            print("Path : ${file("../keystore/production/news-debug-keystore").absolutePath}")
-            storeFile = file("../keystore/production/news-debug-keystore")
-            storePassword = System.getenv("STORE_PASSWORD")
-            keyAlias = System.getenv("KEY_ALIAS")
-            keyPassword = System.getenv("KEY_PASSWORD")
-        }
+//        create("release") {
+//            //TODO Create signingConfig at the time of release
+//            val tmpFilePath = System.getProperty("user.home") + "/work/_temp/keystore/"
+//            val allFilesFromDir = File(tmpFilePath).listFiles()
+//
+//            if (allFilesFromDir != null) {
+//                val keystoreFile = allFilesFromDir.first()
+//                keystoreFile.renameTo(file("keystore/production/news-debug-keystore"))
+//            }
+//            print("Path : ${file("../keystore/production/news-debug-keystore").absolutePath}")
+//            storeFile = file("../keystore/production/news-debug-keystore")
+//            storePassword = System.getenv("STORE_PASSWORD")
+//            keyAlias = System.getenv("KEY_ALIAS")
+//            keyPassword = System.getenv("KEY_PASSWORD")
+//        }
     }
 
     defaultConfig {
