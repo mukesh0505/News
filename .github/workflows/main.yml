@@ -38,7 +38,7 @@ jobs:
       run: ./gradlew test
       
     - name: build prod
-      run: ./gradlew buildRelease
+      run: bash ./gradlew buildRelease
       env:
           SIGNING_KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
           SIGNING_KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
