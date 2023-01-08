@@ -15,7 +15,7 @@ import com.mkr.domain.di.EndPoint
 import com.mkr.news.ui.theme.NewsTheme
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
-import javax.inject.Named
+import javax.inject.Namedbhgvkhj
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
